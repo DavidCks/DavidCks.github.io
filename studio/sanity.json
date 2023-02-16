@@ -16,7 +16,12 @@
   "env": {
     "production": {
       "project": {
-        "basePath": "/__sanity"
+        "basePath": "/cms"
+      }
+    },
+    "development": {
+      "project": {
+        "basePath": "/cms"
       }
     }
   },
