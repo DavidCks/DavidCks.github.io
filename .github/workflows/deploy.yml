@@ -9,10 +9,6 @@ on:
   repository_dispatch:
     types: [trigger_deploy]
 
-  concurrency:
-    group: no-double-trigger
-    cancel-in-progress: true
-
 jobs:
   deploy:
     runs-on: ubuntu-22.04
