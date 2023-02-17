@@ -8,12 +8,6 @@ on:
   repository_dispatch:
     types: [trigger_deploy]
 
-env:
-  SANITY_READ_TOKEN: ${{ secrets.SANITY_READ_TOKEN }}
-  SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
-  SANITY_PROJECT_DATASET: ${{ secrets.SANITY_PROJECT_DATASET }}
-  SANITY_LIVE_PREVIEW: ${{ secrets.SANITY_LIVE_PREVIEW }}
-
 jobs:
   deploy:
     runs-on: ubuntu-22.04
@@ -38,8 +32,13 @@ jobs:
           cmd: install # will run `yarn install` command
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # if needed
-
+        
       - name: yarn
+        env:
+          SANITY_READ_TOKEN: ${{ env.SANITY_READ_TOKEN }}
+          SANITY_PROJECT_ID: ${{ env.SANITY_PROJECT_ID }}
+          SANITY_PROJECT_DATASET: ${{ env.SANITY_PROJECT_DATASET }}
+          SANITY_LIVE_PREVIEW: ${{ env.SANITY_LIVE_PREVIEW }}
         run: yarn & yarn setup
 
       - name: Build
