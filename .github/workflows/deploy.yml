@@ -6,7 +6,7 @@ on:
       - master  # Set a branch name to trigger deployment
   pull_request:
   repository_dispatch:
-    types: [trigger_deploy]
+    types: deploy
     
 jobs:
   deploy:
