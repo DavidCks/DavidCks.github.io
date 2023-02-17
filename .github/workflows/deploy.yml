@@ -9,24 +9,6 @@ on:
     types: [trigger_deploy]
 
 jobs:
-  sanity-deploy:
-      runs-on: ubuntu-22.04
-      name: Deploy Sanity
-      steps:
-        - run: cd studio
-        - name: Set Node.js 18.x
-          uses: actions/setup-node@v3
-          with:
-            node-version: 18.x
-
-        - uses: actions/checkout@v2
-        - uses: sanity-io/github-action-sanity@v0.2-alpha
-          env:
-            SANITY_AUTH_TOKEN: ${{ secrets.SANITY_READ_TOKEN }}
-          with:
-            args: deploy
-
-        - run: cd ..
   deploy:
     runs-on: ubuntu-22.04
     permissions:
@@ -63,7 +45,7 @@ jobs:
           cmd: install # will run `yarn install` command
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # if needed
-        
+
       - name: yarn
         env:
           SANITY_READ_TOKEN: ${{ env.SANITY_READ_TOKEN }}
