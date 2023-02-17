@@ -10,7 +10,7 @@ on:
 
 jobs:
   sanity-deploy:
-      runs-on: ubuntu-18.04
+      runs-on: ubuntu-22.04
       name: Deploy Sanity
       steps:
         - run: cd studio
@@ -34,7 +34,7 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
@@ -43,6 +43,19 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
+
+      - cmd: cd studio
+      - name: Set Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - uses: sanity-io/github-action-sanity@v0.2-alpha
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_READ_TOKEN }}
+        with:
+          args: deploy
+      - cmd: cd ..
 
       - name: Run install
         uses: borales/actions-yarn@v4
