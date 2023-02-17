@@ -5,7 +5,7 @@
     "projectId": "lsp3yd0g"
   },
   "project": {
-    "name": "homepage-starter"
+    "name": "borrowedview.me"
   },
   "plugins": [
     "@sanity/base",

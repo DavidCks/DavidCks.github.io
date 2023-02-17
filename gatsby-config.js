@@ -11,6 +11,8 @@ module.exports = {
         projectId: process.env.SANITY_PROJECT_ID,
         dataset: process.env.SANITY_PROJECT_DATASET,
         token: process.env.SANITY_READ_TOKEN,
+        watchMode: process.env.SANITY_LIVE_PREVIEW == true, //given as "1" and "0" so non-typesafe comparison
+        overlayDrafts: true,
       },
     },
     "gatsby-plugin-sharp",

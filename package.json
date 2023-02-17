@@ -1,17 +1,17 @@
 {
-  "name": "DavidCks.github.io",
+  "name": "borrowedview.me",
   "version": "1.0.0",
   "engines": {
     "node": ">=18.0.0"
   },
   "scripts": {
-    "start": "gatsby develop",
-    "develop": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
+    "start": "GATSBY_ACTIVE_ENV=development gatsby develop",
+    "develop": "GATSBY_ACTIVE_ENV=development gatsby develop",
+    "build": "GATSBY_ACTIVE_ENV=production gatsby build",
+    "serve": "GATSBY_ACTIVE_ENV=production gatsby serve",
     "clean": "gatsby clean",
     "setup": "node ./scripts/setup.js",
-    "deploy": "gatsby build && gh-pages -d public -b gh-pages",
+    "deploy": "GATSBY_ACTIVE_ENV=production gatsby build && gh-pages -d public -b gh-pages",
     "gatsby-provision": "gatsby-provision-sanity --sanity-config-path='./studio' --sanity-content-path='./scripts/content.tar.gz'"
   },
   "dependencies": {
