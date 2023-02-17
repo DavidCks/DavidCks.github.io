@@ -31,11 +31,13 @@ jobs:
         with:
           node-version: 18.x
 
+      - run: cd studio
       - uses: sanity-io/github-action-sanity@v0.2-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_READ_TOKEN }}
         with:
           args: deploy
+      - run: cd ..
 
       - name: Run install
         uses: borales/actions-yarn@v4
