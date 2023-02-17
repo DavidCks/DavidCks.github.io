@@ -7,7 +7,7 @@
   "scripts": {
     "start": "GATSBY_ACTIVE_ENV=development gatsby develop",
     "develop": "GATSBY_ACTIVE_ENV=development gatsby develop",
-    "build": "GATSBY_ACTIVE_ENV=production gatsby build",
+    "build": "yarn & yarn setup & GATSBY_ACTIVE_ENV=production gatsby build",
     "serve": "GATSBY_ACTIVE_ENV=production gatsby serve",
     "clean": "gatsby clean",
     "setup": "node ./scripts/setup.js",
