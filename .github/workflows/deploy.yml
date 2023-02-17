@@ -9,6 +9,22 @@ on:
     types: [trigger_deploy]
 
 jobs:
+  sanity-deploy:
+      runs-on: ubuntu-18.04
+      name: Deploy Sanity
+      steps:
+        - name: into sanity
+        - run: cd studio
+
+        - uses: actions/checkout@v2
+        - uses: sanity-io/github-action-sanity@v0.2-alpha
+          env:
+            SANITY_AUTH_TOKEN: ${{ secrets.SANITY_READ_TOKEN }}
+          with:
+            args: deploy
+
+        - name: out of
+        - run: cd ..
   deploy:
     runs-on: ubuntu-22.04
     permissions:
