@@ -36,9 +36,10 @@ jobs:
       - name: yarn
         uses: sanity-io/github-action-sanity@v0.2-alpha
         env:
-          SANITY_READ_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+          SANITY_READ_TOKEN: ${{ secrets.SANITY_READ_TOKEN }}
           SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
-          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+          SANITY_PROJECT_DATASET: ${{ secrets.SANITY_PROJECT_DATASET }}
+          SANITY_LIVE_PREVIEW: ${{ secrets.SANITY_LIVE_PREVIEW }}
         run: yarn & yarn setup
 
       - name: Build
