@@ -9,9 +9,9 @@ const config = new Configstore(
     globalConfigPath: true,
   }
 )
-const token = process.env.SANITY_READ_TOKEN || config.get("authToken")
-const dataset = process.env.SANITY_PROJECT_DATASET || studio.api?.dataset
-const projectId = process.env.SANITY_PROJECT_ID || studio.api?.projectId
+const token = process.env.SANITY_READ_TOKEN || config.get("authToken") || "skUC4t5abSnjgV33PUIxLgnq0Du4dhBpOZ9mu7dLUCqhs19obz0UsT6GEKfvGfD8UpmORxPF1ZHB5SpLYLdorhazZj8yyTapUi2kQR1iye2YJf4SC9RhvJF6xEy2EnnlXahRf968fUL5GymMqua0Vf7oQSSOk6ZXoO4GsNYafMBpJRvW3VD9"
+const dataset = process.env.SANITY_PROJECT_DATASET || studio.api?.dataset || "production"
+const projectId = process.env.SANITY_PROJECT_ID || studio.api?.projectId || "lsp3yd0g"
 
 if (!token) {
   throw new Error("Could not find Sanity token.")
