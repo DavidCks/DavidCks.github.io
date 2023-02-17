@@ -26,9 +26,6 @@ jobs:
         with:
           node-version: 18.x
 
-      - run:
-        cmd: cd studio
-
       - name: Set Node.js 18.x
         uses: actions/setup-node@v3
         with:
@@ -39,8 +36,6 @@ jobs:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_READ_TOKEN }}
         with:
           args: deploy
-      - run:
-        cmd: cd ..
 
       - name: Run install
         uses: borales/actions-yarn@v4
