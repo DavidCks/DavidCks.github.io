@@ -1,5 +1,4 @@
 name: GitHub Pages
-description: GH Pages
 
 on:
   push:
