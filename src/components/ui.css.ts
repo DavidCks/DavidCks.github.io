@@ -137,7 +137,7 @@ export const widths: Record<Widths, string> = styleVariants(
     half: "50%",
     quarter: "25%",
     third: "33.3333%",
-    twothirds: "33.3333%",
+    twothirds: "66.6666%",
     fitContent: "fit-content",
   },
   (width) => [
@@ -305,14 +305,17 @@ export const text: Record<TextVariants, string> = styleVariants({
     margin0,
     {
       marginBottom: theme.space[3],
-      fontFamily: theme.fonts.heading,
-      fontSize: theme.fontSizes[5],
+      fontFamily: theme.fonts.brush,
+      fontSize: theme.fontSizes[6],
       fontWeight: theme.fontWeights.extrabold,
       lineHeight: theme.lineHeights.tight,
       letterSpacing: theme.letterSpacings.tight,
       "@media": {
         [media.medium]: {
-          fontSize: theme.fontSizes[6],
+          fontSize: theme.fontSizes[7],
+        },
+        [media.large]: {
+          fontSize: theme.fontSizes[8],
         },
       },
     },
@@ -321,7 +324,7 @@ export const text: Record<TextVariants, string> = styleVariants({
     margin0,
     {
       marginBottom: theme.space[3],
-      fontSize: theme.fontSizes[5],
+      fontSize: theme.fontSizes[4],
       fontWeight: theme.fontWeights.extrabold,
       lineHeight: theme.lineHeights.tight,
       letterSpacing: theme.letterSpacings.tight,
@@ -341,12 +344,12 @@ export const text: Record<TextVariants, string> = styleVariants({
     margin0,
     {
       marginBottom: theme.space[2],
-      fontFamily: theme.fonts.mono,
-      fontSize: theme.fontSizes[1],
-      fontWeight: theme.fontWeights.medium,
+      fontFamily: theme.fonts.brush,
+      fontSize: theme.fontSizes[4],
+      fontWeight: theme.fontWeights.bold,
       lineHeight: theme.lineHeights.tight,
-      letterSpacing: theme.letterSpacings.wide,
-      textTransform: "uppercase",
+      letterSpacing: theme.letterSpacings.tight,
+      textTransform: "none",
     },
   ],
   caps: [

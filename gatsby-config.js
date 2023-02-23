@@ -15,6 +15,19 @@ module.exports = {
         overlayDrafts: true,
       },
     },
+    {
+      resolve: `gatsby-omni-font-loader`,
+      options: {
+        enableListener: true,
+        preconnect: [`https://fonts.googleapis.com`, `https://fonts.gstatic.com`],
+        web: [
+          {
+            name: `Alex Brush`,
+            file: `https://fonts.googleapis.com/css2?family=Alex+Brush:wght@400;600;700&display=swap`,
+          },
+        ],
+      },
+    },
     "gatsby-plugin-sharp",
     "gatsby-plugin-image",
     "gatsby-transformer-sharp",
@@ -22,8 +35,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "Gatsby Starter Sanity Homepage",
-        short_name: "Gatsby",
+        name: "Borrowed View",
+        short_name: "Borrowed View",
         start_url: "/",
         // These can be imported once ESM support lands
         background_color: "#ffe491",
