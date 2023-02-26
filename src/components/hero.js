@@ -12,6 +12,7 @@ import {
   Subhead,
   Text,
 } from "./ui"
+import * as styles from "./index-hero.css"
 
 export default function Hero(props) {
   return (
@@ -30,7 +31,7 @@ export default function Hero(props) {
           </Box>
           <Box width="half">
             {props.image && (
-              <GatsbyImage
+              <GatsbyImage className={styles.indexHeroImage}
                 alt={props.image.alt}
                 image={getImage(props.image.gatsbyImageData)}
               />

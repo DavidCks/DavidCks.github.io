@@ -94,6 +94,9 @@ export const flexVariants: Record<FlexVariants, string> = styleVariants({
   },
   column: {
     flexDirection: "column",
+    minHeight: "100%",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
   end: {
     alignItems: "flex-end",
@@ -267,7 +270,9 @@ export const text: Record<TextVariants, string> = styleVariants({
   body: [
     margin0,
     {
-      marginBottom: theme.space[3],
+      padding: 0,
+      margin: 0,
+      marginBottom: 0,
       fontSize: theme.fontSizes[2],
       fontWeight: theme.fontWeights.normal,
       lineHeight: theme.lineHeights.text,
@@ -304,7 +309,7 @@ export const text: Record<TextVariants, string> = styleVariants({
   heading: [
     margin0,
     {
-      marginBottom: theme.space[3],
+      marginBottom: theme.space[1],
       fontFamily: theme.fonts.brush,
       fontSize: theme.fontSizes[6],
       fontWeight: theme.fontWeights.extrabold,
@@ -344,7 +349,7 @@ export const text: Record<TextVariants, string> = styleVariants({
     margin0,
     {
       marginBottom: theme.space[2],
-      fontFamily: theme.fonts.brush,
+      fontFamily: theme.fonts.text,
       fontSize: theme.fontSizes[4],
       fontWeight: theme.fontWeights.bold,
       lineHeight: theme.lineHeights.tight,
