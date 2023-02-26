@@ -328,11 +328,19 @@ exports.createSchemaCustomization = async ({ actions }) => {
       content: [HomepageBlock]
     }
 
+    interface BlogHero implements Node & HomepageBlock {
+      id: ID!
+      blocktype: String
+      heading: String
+      text: String
+      image: HomepageImage
+    }
+
     interface BlogPost implements Node & HomepageBlock {
       id: ID!
       blocktype: String
       title: String
-      content: String
+      content: String! @sanityBlockContent(fieldName: "content")
       image: HomepageImage
     }
   `)
@@ -538,11 +546,19 @@ exports.createSchemaCustomization = async ({ actions }) => {
       content: [HomepageBlock]
     }
 
+    type SanityBlogHero implements Node & BlogHero & HomepageBlock @dontInfer {
+      id: ID!
+      blocktype: String @blocktype
+      heading: String
+      text: String
+      image: HomepageImage @link(by: "id", from: "image.asset._ref")
+    }
+
     type SanityBlogPost implements Node & BlogPost & HomepageBlock {
       id: ID!
       blocktype: String @blocktype
       title: String
-      content: String
+      content: String! @sanityBlockContent(fieldName: "content")
       image: HomepageImage @link(by: "id", from: "image.asset._ref")
     }
 

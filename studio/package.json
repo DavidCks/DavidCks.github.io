@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "sanity start",
-    "build": "sanity build ../static/cms",
+    "build": "sanity graphql deploy && sanity build ../static/cms",
     "deploy": "sanity graphql deploy",
     "sanity-init": "sanity init",
     "sanity-import": "sanity dataset import ../scripts/content.tar.gz production",

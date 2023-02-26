@@ -9,7 +9,7 @@ export const desktopHeaderNavWrapper = style({
   "@media": {
     [media.small]: {
       display: "block",
-      paddingTop: theme.space[4],
+      paddingTop: theme.space[2],
     },
   },
 })

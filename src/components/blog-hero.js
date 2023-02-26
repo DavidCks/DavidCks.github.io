@@ -4,19 +4,15 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Container, Section, Text, SuperHeading } from "./ui"
 import * as styles from "./about-hero.css"
 
-export default function BlogPost(props) {
+export default function BlogHero(props) {
   return (
     <Section>
       <Container>
         <SuperHeading className={styles.aboutHeroHeader}>
-          {props.title}
+          {props.heading}
         </SuperHeading>
-        {props.content && (
-          <div
-          dangerouslySetInnerHTML={{
-            __html: props.content,
-          }}
-        />
+        {props.text && (
+          <Text className={styles.aboutHeroText}>{props.text}</Text>
         )}
       </Container>
       <Container width="wide">
@@ -33,14 +29,14 @@ export default function BlogPost(props) {
 }
 
 export const query = graphql`
-  fragment BlogPostContent on BlogPost {
+  fragment BlogHeroContent on BlogHero {
     id
-    title
+    heading
+    text
     image {
       id
       gatsbyImageData
       alt
     }
-    content
   }
 `

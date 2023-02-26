@@ -40,6 +40,7 @@ import aboutLogoList from "./aboutLogoList"
 
 import blogPage from './blogPage'
 import blogPost from './blogPost'
+import blogHero from './blogHero'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -83,6 +84,7 @@ export default createSchema({
     aboutLogoList,
     // blog page
     blogPage,
-    blogPost
+    blogPost,
+    blogHero
   ]),
 })
