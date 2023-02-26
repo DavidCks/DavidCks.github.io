@@ -319,6 +319,22 @@ exports.createSchemaCustomization = async ({ actions }) => {
       image: HomepageImage
       html: String!
     }
+
+    interface BlogPage implements Node {
+      id: ID!
+      title: String
+      description: String
+      image: HomepageImage
+      content: [HomepageBlock]
+    }
+
+    interface BlogPost implements Node & HomepageBlock {
+      id: ID!
+      blocktype: String
+      title: String
+      content: String
+      image: HomepageImage
+    }
   `)
 
   // CMS-specific types for Homepage
@@ -512,6 +528,22 @@ exports.createSchemaCustomization = async ({ actions }) => {
       description: String
       image: HomepageImage @link(by: "id", from: "image.asset._ref")
       content: [HomepageBlock]
+    }
+
+    type SanityBlogPage implements Node & BlogPage {
+      id: ID!
+      title: String
+      description: String
+      image: HomepageImage @link(by: "id", from: "image.asset._ref")
+      content: [HomepageBlock]
+    }
+
+    type SanityBlogPost implements Node & BlogPost & HomepageBlock {
+      id: ID!
+      blocktype: String @blocktype
+      title: String
+      content: String
+      image: HomepageImage @link(by: "id", from: "image.asset._ref")
     }
 
     type SanityAboutHero implements Node & AboutHero & HomepageBlock {
