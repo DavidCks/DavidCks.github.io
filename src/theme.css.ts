@@ -52,6 +52,7 @@ const fonts = {
   heading: '"DM Sans", sans-serif',
   mono: "DM Mono, Menlo, monospace",
   brush: '"Alex Brush", sans-serif',
+  
 }
 
 const lineHeights = {
