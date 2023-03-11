@@ -1,4 +1,5 @@
 import * as React from "react"
+import { graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import {
@@ -6,57 +7,44 @@ import {
   Flex,
   Box,
   Space,
-  Heading,
   Text,
-  Avatar,
+  SuperHeading,
 } from "../components/ui"
-import { avatar as avatarStyle } from "../components/ui.css"
 import * as styles from "./blog-post.css"
 import SEOHead from "../components/head"
 
 export default function BlogPost(props) {
+  let post = getCurrentPost(props)
   return (
     <Layout>
       <Container>
         <Box paddingY={5}>
-          <Heading as="h1" center>
-            {props.title}
-          </Heading>
-          <Space size={4} />
-          {props.author && (
+          <SuperHeading as="h1" center>
+            {post.title}
+          </SuperHeading>
+          {post.author && (
             <Box center>
               <Flex>
-                {props.author.avatar &&
-                  (!!props.author.avatar.gatsbyImageData ? (
-                    <Avatar
-                      {...props.author.avatar}
-                      image={props.author.avatar.gatsbyImageData}
-                    />
-                  ) : (
-                    <img
-                      src={props.author.avatar.url}
-                      alt={props.author.name}
-                      className={avatarStyle}
-                    />
-                  ))}
-                <Text variant="bold">{props.author.name}</Text>
+                <Text variant="normal">Author:</Text>
+                <Text variant="bold">{post.author}</Text>
               </Flex>
             </Box>
           )}
+          <Space size={2} />
+          <Text center>{post._updatedAt}</Text>
           <Space size={4} />
-          <Text center>{props.date}</Text>
-          <Space size={4} />
-          {props.image && (
-            <GatsbyImage
-              alt={props.image.alt}
-              image={props.image.gatsbyImageData}
-            />
+          {post.image && (
+            <Flex variant="center"><GatsbyImage
+              alt={post.image.alt}
+              image={post.image.gatsbyImageData}
+              className={styles.blogImage}
+            /></Flex>
           )}
           <Space size={5} />
           <div
             className={styles.blogPost}
             dangerouslySetInnerHTML={{
-              __html: props.html,
+              __html: post.content,
             }}
           />
         </Box>
@@ -65,5 +53,35 @@ export default function BlogPost(props) {
   )
 }
 export const Head = (props) => {
-  return <SEOHead {...props} description={props.excerpt} />
+  let post = getCurrentPost(props)
+  return <SEOHead {...post} description={post.content} />
 }
+
+function getCurrentPost(props) {
+  const { blogPage } = props.data
+  const currentUrl =  window.location.href.substring(0, window.location.href.length - 1).split("/").pop()
+  return findObjectByTitle(blogPage.blocks, currentUrl.replaceAll("-"," "))
+}
+
+function findObjectByTitle(arr, title) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].title === title) {
+      return arr[i];
+    }
+  }
+  return null;
+}
+
+export const query = graphql`
+  {
+  blogPage {
+    blocks: content {
+      id
+      ...BlogPostContent
+      ... on SanityBlogPost {
+        _updatedAt(formatString: "dddd, D. MMMM YYYY")
+      }
+    }
+  }
+}
+`

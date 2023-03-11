@@ -340,6 +340,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
       id: ID!
       blocktype: String
       title: String
+      author: String
       content: String! @sanityBlockContent(fieldName: "content")
       image: HomepageImage
     }
@@ -558,6 +559,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
       id: ID!
       blocktype: String @blocktype
       title: String
+      author: String
       content: String! @sanityBlockContent(fieldName: "content")
       image: HomepageImage @link(by: "id", from: "image.asset._ref")
     }
@@ -617,7 +619,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
   `)
 }
 
-exports.createPages = ({ actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createSlice } = actions
   createSlice({
     id: "header",
@@ -627,5 +629,33 @@ exports.createPages = ({ actions }) => {
     id: "footer",
     component: require.resolve("./src/components/footer.js"),
   })
+
+  const { createPage } = actions
+  // blog pages
+  const singleBlogTemplate = require.resolve('./src/templates/blog-post.js');
+  const blog = await graphql(`
+  query MyQuery {
+    blogPage {
+      content {
+        ... on SanityBlogPost {
+          title
+          id
+        }
+      }
+    }
+  }`);
+
+  if (blog.errors) throw blog.errors;
+  const blogBlocks = blog.data.blogPage.content;
+
+  // single blogs pages
+  blogBlocks.forEach((blog) => {
+    if(blog.title) {
+      createPage({
+        path: `/blogs/${blog.title.replaceAll(" ", "-")}`,
+        component: singleBlogTemplate,
+        context: { id: blog.id },
+      });
+    }
+  });
 }
-      

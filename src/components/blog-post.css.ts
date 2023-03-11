@@ -1,20 +1,19 @@
-import { style } from "@vanilla-extract/css"
+import { globalStyle, style } from "@vanilla-extract/css"
 import { theme } from "../theme.css"
 import { media } from "./ui.css"
 
 // specific maxWidths are to support design and
 // current length of content in the Header and Text
 export const blogPostHeader = style({
-  marginLeft: theme.space[5],
   marginBottom: 0,
-  fontSize: theme.fontSizes[7],
+  fontFamily: theme.fonts.heading,
+  fontSize: theme.fontSizes[4],
   width: "100%",
 })
 
 export const blogPostText = style({
   fontSize: theme.fontSizes[1],
   marginBottom: theme.space[3],
-  marginLeft: theme.space[5],
   "@media": {
     [media.small]: {
       fontSize: theme.fontSizes[4],
@@ -24,6 +23,7 @@ export const blogPostText = style({
 
 export const blogPostTextContainer = style({
   display: "box",
+  textAlign: "justify",
   position: "relative",
   lineClamp: 2,
   overflow: "hidden",
@@ -44,4 +44,10 @@ export const truncatorStyle = style({
 export const blogPostImage = style({
   width: "33.3333%",
   maxHeight: "300px",
+})
+
+globalStyle(`a`, {
+  color: "unset",
+  textDecoration: "unset",
+  fontWeight: theme.fontWeights.medium,
 })

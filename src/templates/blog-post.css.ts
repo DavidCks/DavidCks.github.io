@@ -1,8 +1,13 @@
 import { style, globalStyle } from "@vanilla-extract/css"
 import { theme } from "../../src/theme.css"
+import { widths } from '../components/ui.css';
 
 export const blogPost = style({
   fontSize: theme.fontSizes[3],
+})
+
+export const blogImage = style({
+  width: theme.sizes.tight,
 })
 
 globalStyle(`${blogPost} img`, {

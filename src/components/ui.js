@@ -106,6 +106,10 @@ export function Section(props) {
   return <Box as="section" className={styles.section} {...props} />
 }
 
+export function Divider(props) {
+  return <div style={{width: "calc(100% - 40px)", borderTop: "2px dashed #111", margin: "0 20px 20px 20px"}} />
+}
+
 export function Text({
   variant = "body",
   center = false,

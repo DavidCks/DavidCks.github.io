@@ -27,7 +27,7 @@ export const blogHeroText = style({
 })
 
 export const blogHeroImage = style({
-  marginTop: "-400px",
+  marginTop: "-364px",
   zIndex: "-1",
   width: "100%",
 })

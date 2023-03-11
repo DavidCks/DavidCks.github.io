@@ -48,13 +48,13 @@ export const containers: Record<Containers, string> = styleVariants({
       paddingLeft: 0,
       paddingRight: 0,
       paddingTop: theme.space[4],
-      paddingBottom: theme.space[4],
+      paddingBottom: 0,
       "@media": {
         [media.medium]: {
           paddingLeft: theme.space[4],
           paddingRight: theme.space[4],
           paddingTop: theme.space[5],
-          paddingBottom: theme.space[5],
+          paddingBottom: theme.space[2],
         },
       },
     },
@@ -293,7 +293,7 @@ export const text: Record<TextVariants, string> = styleVariants({
     margin0,
     {
       marginTop: theme.space[4],
-      marginBottom: theme.space[6],
+      marginBottom: theme.space[4],
       fontSize: theme.fontSizes[5],
       fontFamily: theme.fonts.heading,
       fontWeight: theme.fontWeights.extrabold,
@@ -309,7 +309,8 @@ export const text: Record<TextVariants, string> = styleVariants({
   heading: [
     margin0,
     {
-      marginBottom: theme.space[1],
+      marginTop: theme.space[4],
+      marginBottom: theme.space[5],
       fontFamily: theme.fonts.brush,
       fontSize: theme.fontSizes[6],
       fontWeight: theme.fontWeights.extrabold,
@@ -317,10 +318,10 @@ export const text: Record<TextVariants, string> = styleVariants({
       letterSpacing: theme.letterSpacings.tight,
       "@media": {
         [media.medium]: {
-          fontSize: theme.fontSizes[7],
+          fontSize: theme.fontSizes[2],
         },
         [media.large]: {
-          fontSize: theme.fontSizes[8],
+          fontSize: theme.fontSizes[7],
         },
       },
     },
