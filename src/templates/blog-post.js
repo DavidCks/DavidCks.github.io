@@ -59,7 +59,7 @@ export const Head = (props) => {
 
 function getCurrentPost(props) {
   const { blogPage } = props.data
-  const currentUrl =  props.location.substring(0, window.location.href.length - 1).split("/").pop()
+  const currentUrl =  props.location.substring(0, props.location.length - 1).split("/").pop()
   return findObjectByTitle(blogPage.blocks, currentUrl.replaceAll("-"," "))
 }
 
